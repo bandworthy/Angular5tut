@@ -9,7 +9,35 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<div *ngIf="!authentication"><app-login></app-login></div>
 <body>
+    <div *ngIf="authentication">
+
+        <app-head></app-head>
+      
+        <button type="button" mat-button (click)="drawer.toggle()">
+      
+          Menu
+      
+        </button>
+      
+        <mat-drawer-container class="example-container" autosize>
+      
+          <mat-drawer #drawer class="example-sidenav" mode="side">
+      
+            <app-left-panel></app-left-panel>
+      
+          </mat-drawer>
+      
+          <div>
+      
+            <router-outlet></router-outlet>
+      
+          </div>
+      
+        </mat-drawer-container>
+      
+      </div>
   <app-root></app-root>
 </body>
 </html>
